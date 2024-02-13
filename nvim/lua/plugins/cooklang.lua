@@ -1,5 +1,0 @@
-return {
-  {
-    "luizribeiro/vim-cooklang",
-  },
-}
