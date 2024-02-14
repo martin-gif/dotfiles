@@ -5,3 +5,11 @@ frontforge
 linearmouse
 spotify-tui
 .DS_Store
+dconf
+environment.d
+fontconfig/conf.d
+fontforge
+fontforge
+systemd/user
+user-dirs.conf
+user-dirs.dirs
