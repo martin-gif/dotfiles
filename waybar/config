@@ -1,0 +1,133 @@
+[
+  {
+    "backlight": {
+      "format": " {}%",
+      "interval": 1,
+      "on-scroll-down": "light -U 5",
+      "on-scroll-up": "light -A 5",
+      "tooltip": false
+    },
+    "battery": {
+      "format": "{icon}  {capacity}%",
+      "format-alt": "{time} {icon}",
+      "format-charging": " {capacity}%",
+      "format-icons": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "format-plugged": " {capacity}%",
+      "states": {
+        "critical": 20,
+        "good": 95,
+        "warning": 30
+      }
+    },
+    "clock": {
+      "format": "{:%a %d.%m.%Y   %H:%M}"
+    },
+    "cpu": {
+      "format": " {}%",
+      "interval": 15,
+      "max-length": 10
+    },
+    "custom/launcher": {
+      "format": " ",
+      "on-click": "rofi -show drun",
+      "on-clickright": "killall rofi"
+    },
+    "custom/media": {
+      "escape": true,
+      "exec": "$HOME/.config/system_scripts/mediaplayer.py 2> /dev/null",
+      "format": "{icon} {}",
+      "format-icons": {
+        "default": " ",
+        "spotify": " "
+      },
+      "interval": 30,
+      "max-length": 20,
+      "on-click": "playerctl play-pause",
+      "return-type": "json"
+    },
+    "custom/power": {
+      "format": " ",
+      "on-click": "bash ~/.config/rofi/powermenu.sh"
+    },
+    "custom/updates": {
+      "exec": "checkupdates | wc -l",
+      "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
+      "format": "{} Update(s)",
+      "interval": 15,
+      "on-click": "alacritty -e paru -Syu && notify-send 'The system has been updated' "
+    },
+    "custom/wallpaper": {
+      "format": " ",
+      "on-click": "bash ~/.config/system_scripts/pkill_bc"
+    },
+    "layer": "top",
+    "memory": {
+      "format": " {}%",
+      "interval": 30,
+      "max-length": 10
+    },
+    "modules-center": [
+      "river/tags"
+    ],
+    "modules-left": [
+      "custom/launcher",
+      "cpu",
+      "memory",
+      "custom/media",
+      "tray"
+    ],
+    "modules-right": [
+      "custom/updates",
+      "custom/tomato",
+      "custom/wallpaper",
+      "backlight",
+      "pulseaudio",
+      "clock",
+      "battery",
+      "custom/power"
+    ],
+
+    "custom/tomato": {
+      "exec": "tomato -t",
+      "interval": 0,
+      "tail": true,
+      "format": "<label>",
+      "format-padding": 1,
+      "label": "%output%"
+    },
+
+    "network": {
+      "format-ethernet": "",
+      "format-wifi": "  {essid}",
+      "tooltip": false
+    },
+    "position": "top",
+    "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-icons": {
+        "default": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "format-muted": "{icon} {volume}%",
+      "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+      "scroll-step": 5,
+      "tooltip": false
+    },
+    "river/tags": {
+      "num-tags": 6
+    },
+    "tray": {
+      "icon-size": 18,
+      "spacing": 10
+    }
+  }
+]
