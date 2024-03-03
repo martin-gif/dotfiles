@@ -6,4 +6,8 @@
     selected:       #61AFEFFF;
     active:         #98C379FF;
     urgent:         #E06C75FF;
+
+    // added for powermenu
+    border:         #59C2FFff;
+    border-alt:     #AAD94Cff;
 }

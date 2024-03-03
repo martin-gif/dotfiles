@@ -34,7 +34,7 @@
       "max-length": 10
     },
     "custom/launcher": {
-      "format": " ",
+      "format": " ",
       "on-click": "rofi -show drun",
       "on-clickright": "killall rofi"
     },
@@ -53,7 +53,7 @@
     },
     "custom/power": {
       "format": " ",
-      "on-click": "bash ~/.config/rofi/powermenu.sh"
+      "on-click": "bash ~/.config/rofi/powermenu/powermenu.sh"
     },
     "custom/updates": {
       "exec": "checkupdates | wc -l",
