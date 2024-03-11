@@ -10,6 +10,9 @@ M.general = {
     ["<leader>cq"] = {":VimtexStop<CR>"},
     ["<leader>ss"] = {":set spell spelllang=de_de<CR>"},
     ["<leader>sq"] = {":set nospell<CR>"},
+    ["zz"] = {"z="},
+
+    ["<leader>fb"] = {":Telescope bibtex<CR>","find Bibtex Entry"}
   },
   v = {
     [">"] = { ">gv", "indent"},

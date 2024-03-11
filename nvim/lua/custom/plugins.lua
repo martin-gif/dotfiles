@@ -90,6 +90,11 @@ local plugins = {
       vim.g.vimtex_context_pdf_viewer = "sioyek"
     end,
   },
+
+  {
+    "nvim-telescope/telescope-bibtex.nvim",
+
+  },
 }
 
 return plugins
