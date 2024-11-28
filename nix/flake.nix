@@ -1,46 +1,40 @@
 {
-  description = "Example nix-darwin system flake";
+  description = "Nix configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs }:
-  let
-    configuration = { pkgs, ... }: {
-      # List packages installed in system profile. To search by name, run:
-      # $ nix-env -qaP | grep wget
-      environment.systemPackages =
-        [ pkgs.vim
-        ];
-
-      services.nix-daemon.enable = true;
-      # Necessary for using flakes on this system.
-      nix.settings.experimental-features = "nix-command flakes";
-
-      # Enable alternative shell support in nix-darwin.
-      programs.zsh.enable = true;
-      # programs.fish.enable = true;
-
-      # Set Git commit hash for darwin-version.
-      system.configurationRevision = self.rev or self.dirtyRev or null;
-
-      # Used for backwards compatibility, please read the changelog before changing.
-      # $ darwin-rebuild changelog
-      system.stateVersion = 5;
-
-      
-      # The platform the configuration will be used on.
-      nixpkgs.hostPlatform = "aarch64-darwin";
-    };
-  in
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, mac-app-util, ...}:
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#MacBook-Pro-von-Marvin
     darwinConfigurations."Marvin" = nix-darwin.lib.darwinSystem {
-      modules = [ configuration ];
+      system = "aarch64-darwin";
+  
+      specialArgs = { inherit inputs; };
+
+      modules = [ 
+        ./darwin-config.nix
+        mac-app-util.darwinModules.default
+        home-manager.darwinModules.home-manager {
+        
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.sharedModules = [
+            mac-app-util.homeManagerModules.default
+          ];
+          home-manager.user.Marvin = import ./home.nix;
+        }
+      ];
     };
   };
 }
