@@ -93,7 +93,15 @@ local plugins = {
 
   {
     "nvim-telescope/telescope-bibtex.nvim",
-
+    config = function ()
+      require("telescope").setup {
+        extension = {
+          bibtex = {
+            search_keys = {"title","autor"},
+          }
+        }
+      }
+    end
   },
 }
 
