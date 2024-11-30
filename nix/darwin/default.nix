@@ -3,6 +3,7 @@
   imports = [
     ./settings/homebrew.nix
     ./settings/system.nix
+    ./settings/podman.nix
   ];
 
   

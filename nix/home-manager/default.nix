@@ -1,12 +1,9 @@
 {pkgs, ...} :
 {
-    imports = [
-      ./config/podman.nix
-    ];
-
-    imports = [
-    ./zsh.nix
+  imports = [
+    ./config/zsh.nix
   ];
+
 
   # let home-manager install and manage itself.
   programs.home-manager.enable = true;
