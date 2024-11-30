@@ -24,7 +24,7 @@
         config.allowUnfree = true;
       };
       modules = [ 
-        ./darwin-config.nix
+        ./darwin
         mac-app-util.darwinModules.default
         home-manager.darwinModules.home-manager {
           home-manager = {

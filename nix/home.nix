@@ -19,16 +19,7 @@
   };
  
   programs = {
-    zsh = {
-      enable = true;
-  
-      shellAliases = {
-        ls = "ls --color";
-        switch = "darwin-rebuild switch --flake ~/.config/nix";
-      };
-    };
-
-    nvim = {
+    neovim = {
       enable = true;
     };
 
@@ -37,9 +28,15 @@
       enableZshIntegration = true;
     };
 
+    zoxide = {
+      enable = true;
+      options = [
+        "--no-cmd"
+      ];
+    };
+
     bat = {
       enable = true;
-      config.theme = "TwoDark";
     };
 
     git = {

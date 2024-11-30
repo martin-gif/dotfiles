@@ -1,5 +1,9 @@
  {pkgs, ...}:
  {
+  imports = [
+    ./settings/homebrew.nix
+  ];
+
   services.nix-daemon.enable = true;
  
   # Necessary for using flakes on this system.
@@ -31,23 +35,4 @@
   # If you're on an older system, replace with "x86_64-darwin"
   nixpkgs.hostPlatform = "aarch64-darwin";
   nixpkgs.config.allowUnfree = true;
-
-  homebrew = {
-    enable = true;
-
-    onActivation = {
-      autoUpdate = true;
-      cleanup = "zap";
-      upgrade = true;
-    };
-
-    brews = [
-     # "cowsay"
-    ];
-    casks = [
-     # "discord"
-     # "visual-studio-code"
-     # "anki"
-    ];
-  };
 }
