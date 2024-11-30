@@ -25,6 +25,7 @@
       };
       modules = [ 
         ./darwin
+        ./podman.nix
         mac-app-util.darwinModules.default
         home-manager.darwinModules.home-manager {
           home-manager = {
