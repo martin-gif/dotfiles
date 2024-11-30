@@ -17,22 +17,26 @@
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#MacBook-Pro-von-Marvin
-    darwinConfigurations."Marvin" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations.marvin = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
-  
-      specialArgs = { inherit inputs; };
-
+      pkgs = import nixpkgs {
+        system = "aarch64-darwin";
+        config.allowUnfree = true;
+      };
       modules = [ 
         ./darwin-config.nix
         mac-app-util.darwinModules.default
         home-manager.darwinModules.home-manager {
-        
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.sharedModules = [
-            mac-app-util.homeManagerModules.default
-          ];
-          home-manager.user.Marvin = import ./home.nix;
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            sharedModules = [
+              mac-app-util.homeManagerModules.default
+            ];
+            users.marvin.imports =  [
+              ./home.nix
+            ];
+          };
         }
       ];
     };

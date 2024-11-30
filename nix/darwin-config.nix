@@ -5,21 +5,23 @@
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
 
-  users.users.Marvin = {
-    home = "/Users/marvinraschke/";
-    name = "Marvin"
+  users.users.marvin = {
+    home = "/Users/marvin/";
+    name = "marvin";
   };
+
+  programs.zsh.enable = true;
  
   nix.extraOptions = ''
     auto-optimise-store = true
   '';
 
   environment.systemPackages =
-    [ pkgs.vim
+    [ 
     ];
 
   # Set Git commit hash for darwin-version.
-  system.configurationRevision = self.rev or self.dirtyRev or null;
+  # system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
@@ -32,10 +34,20 @@
 
   homebrew = {
     enable = true;
- 
+
+    onActivation = {
+      autoUpdate = true;
+      cleanup = "zap";
+      upgrade = true;
+    };
+
+    brews = [
+     # "cowsay"
+    ];
     casks = [
-      "discord"
-      "visual-studio-code"
+     # "discord"
+     # "visual-studio-code"
+     # "anki"
     ];
   };
 }
