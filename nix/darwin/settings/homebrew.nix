@@ -19,6 +19,7 @@
      "keepassxc"
      "linearmouse"
      "pyCharm"
+     "webstorm"
      "sioyek"
      "wezterm"
     ];

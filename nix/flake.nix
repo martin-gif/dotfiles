@@ -34,7 +34,7 @@
               mac-app-util.homeManagerModules.default
             ];
             users.marvin.imports =  [
-              ./home.nix
+              ./home-manager
             ];
           };
         }

@@ -1,7 +1,10 @@
-{ pkgs, ... }:
+{pkgs, ...} :
 {
-  
-  imports = [
+    imports = [
+      ./config/podman.nix
+    ];
+
+    imports = [
     ./zsh.nix
   ];
 
