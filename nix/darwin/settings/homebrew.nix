@@ -11,6 +11,11 @@
 
     brews = [
      # "cowsay"
+
+     # Docker alternativ
+     "podman"
+     "docker-compose"
+     # "podman-mac-helper"
     ];
     casks = [
      # "discord"
@@ -22,6 +27,8 @@
      "webstorm"
      "sioyek"
      "wezterm"
+     "sioyek"
+     "logseq"
     ];
   };
 }

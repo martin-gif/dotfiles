@@ -3,11 +3,10 @@
   imports = [
     ./settings/homebrew.nix
     ./settings/system.nix
-    ./settings/podman.nix
   ];
 
-  
- 
+
+
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
 
@@ -17,22 +16,22 @@
   };
 
   programs.zsh.enable = true;
- 
+
   nix.extraOptions = ''
     auto-optimise-store = true
   '';
 
   environment.systemPackages =
-    [   
-        
+    [
         pkgs.pipenv
+        pkgs.ollama
     ];
 
   # Set Git commit hash for darwin-version.
   # system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
 
-  
-      
+
+
   # The platform the configuration will be used on.
   # If you're on an older system, replace with "x86_64-darwin"
   nixpkgs.hostPlatform = "aarch64-darwin";

@@ -1,4 +1,5 @@
 local wezterm = require 'wezterm'
+local act = wezterm.action
 local config = {
   color_scheme = "Catppuccin Mocha",
   font =
@@ -10,6 +11,13 @@ local config = {
 
   -- until wezterm fixes the issue 4483
   enable_wayland = false,
+
+  key_tables = {
+    copy_mode = {
+      { key = 'RightArrow', mods = 'NONE', action = act.CopyMode 'MoveForwardWord' },
+      { key = 'LeftArrow', mods = 'NONE', action = act.CopyMode 'MoveBackwardWord' },
+    },
+  },
 }
 
 return config

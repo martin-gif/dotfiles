@@ -1,2 +1,5 @@
 add_newline = false 
 
+[nodejs]
+detect_extensions = ['js', 'ts']
+detect_folders = []

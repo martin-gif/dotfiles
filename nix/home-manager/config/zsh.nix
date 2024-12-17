@@ -24,13 +24,14 @@
       python = "python3";
       tmux = "TERM=screen-256color-bce tmux";
       # docker-clean = "docker rmi $(docker images -f 'dangling=true' -q)";
+      docker = "podman";
     };
 
     initExtra = ''
       # SPACESHIP_SCALA_SHOW=false
       export EDITOR=nvim
       export TERM=xterm-256color
-      export LANG=de_US.UTF-8ATH"
+      export LANG=de_US.UTF-8ATH
       # Ok, if Nix doesn't work, try this:
       # export PATH="/run/current-system/sw/bin:$PATH"
 
